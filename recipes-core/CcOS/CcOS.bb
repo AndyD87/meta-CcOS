@@ -1,6 +1,6 @@
 DESCRIPTION = "CcOS framework"
 SECTION = "examples"
-LICENSE = "GPLv2"
+LICENSE = "LGPLv3"
 PR = "r0"
 
 DEPENDS = "openssl"
