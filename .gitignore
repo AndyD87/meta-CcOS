@@ -1,0 +1,4 @@
+conf/bblayers.conf
+poky-*
+build
+mirror
