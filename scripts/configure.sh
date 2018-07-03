@@ -1,18 +1,24 @@
-git clone -b morty git://git.yoctoproject.org/poky.git yocto
-cd yocto
-git clone -b morty git://github.com/openembedded/meta-openembedded.git
-git clone git://github.com/AndyD87/meta-CcOS.git
+#!/bin/bash
 
-rm -rf build/conf
+# include common methods requires bash
+source "lib.common.sh"
 
-. ./oe-init-build-env
+# Change to top of meta
+cd ..
 
-bitbake-layers add-layer ../meta
-bitbake-layers add-layer ../meta-poky
-bitbake-layers add-layer ../meta-openembedded/meta-oe
-bitbake-layers add-layer ../meta-openembedded/meta-python
-bitbake-layers add-layer ../meta-openembedded/meta-networking
-bitbake-layers add-layer ../meta-yocto-bsp
-bitbake-layers add-layer ../meta-CcOS
+if [ "$YOCTO_BRANCH" = "" ] ; then
+  echo "ERROR: Yocto branch not defined"
+  exit -1
+fi
 
-cp ../meta-CcOS/conf/local.conf            conf/local.conf
+#################################################################################
+# Load paths to configs
+#################################################################################
+cp conf/bblayers.conf.in conf/bblayers.conf
+exit_on_fail "Failed to copy bblayers.conf"
+
+newpath=$PWD
+newpath=${newpath////\\/} # escape path /home/test -> \/home\/test
+sed -i conf/bblayers.conf -e 's/${HOME}/'$newpath'/g'
+sed -i conf/bblayers.conf -e 's/${YOCTO_BRANCH}/'$YOCTO_BRANCH'/g'
+exit_on_fail "Failed to sed bblayers.conf"
