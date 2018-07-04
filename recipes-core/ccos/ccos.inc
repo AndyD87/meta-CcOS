@@ -11,6 +11,6 @@ S = "${WORKDIR}/git"
 
 DEPENDS = "openssl"
 
-SRC_URI = "git://github.com/AndyD87/CcOS.git;protocol=https;tag=v${PV}"
+SRC_URI = "git://github.com/AndyD87/CcOS.git;protocol=https;"
 
 inherit pkgconfig cmake
