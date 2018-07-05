@@ -11,5 +11,5 @@ fi
 ./configure.sh
 ./build.sh
 exit_on_fail "build failed"
-./sdk.sh
-./install.sh
+#./sdk.sh
+#./install.sh

@@ -2,7 +2,7 @@ DESCRIPTION = "Image with Sato, a mobile environment and visual style for \
 mobile devices. The image supports X11 with a Sato theme, Pimlico \
 applications, and contains terminal, editor, and file manager."
 
-IMAGE_FEATURES += "splash package-management"
+IMAGE_FEATURES += "splash package-management x11-base"
 
 LICENSE = "MIT"
 
@@ -36,6 +36,6 @@ ROOTFS_POSTPROCESS_COMMAND += " \
     disable_bootlogd ; \
  "
 
-IMAGE_BASENAME = "ccos-image"
+IMAGE_BASENAME = "ccos-image-x11"
 
 TOOLCHAIN_HOST_TASK += "nativesdk-perl-modules"
