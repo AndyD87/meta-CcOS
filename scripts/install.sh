@@ -1,7 +1,11 @@
 #!/bin/bash
 
 # include common methods requires bash
-source "lib.common.sh"
+if [ "$LIB_COMMON_INCLUDED" = "" ]; then
+        source "lib.common.sh"
+fi
+
+START_DIR=$(pwd)
 
 # nothing to install at the moment
 exit 0;
@@ -103,3 +107,5 @@ exit_on_fail "install failed to copy licenses"
 echo "Copy Package mirror"
 tar czf $INSTALL_DIR/mirror.tar.gz -C $MIRROR_DIR .
 exit_on_fail "install failed to create mirror package"
+
+cd $START_DIR

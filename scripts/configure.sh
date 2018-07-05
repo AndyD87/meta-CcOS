@@ -1,7 +1,11 @@
 #!/bin/bash
 
 # include common methods requires bash
-source "lib.common.sh"
+if [ "$LIB_COMMON_INCLUDED" = "" ]; then
+	source "lib.common.sh"
+fi
+
+START_DIR=$(pwd)
 
 # Change to top of meta
 cd ..
@@ -22,3 +26,5 @@ newpath=${newpath////\\/} # escape path /home/test -> \/home\/test
 sed -i conf/bblayers.conf -e 's/${HOME}/'$newpath'/g'
 sed -i conf/bblayers.conf -e 's/${YOCTO_BRANCH}/'$YOCTO_BRANCH'/g'
 exit_on_fail "Failed to sed bblayers.conf"
+
+cd $START_DIR

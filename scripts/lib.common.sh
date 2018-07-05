@@ -3,6 +3,8 @@
 # This script contains common methods ready to include
 # for other scripts
 
+LIB_COMMON_INCLUDED="1"
+
 if [ ! "$BASH_VERSION" ] ; then
     echo "Please execute this script directly or with bash" 1>&2
     exit 1

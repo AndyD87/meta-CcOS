@@ -1,7 +1,11 @@
 #!/bin/bash
 
 # include common methods requires bash
-source "lib.common.sh"
+if [ "$LIB_COMMON_INCLUDED" = "" ]; then
+        source "lib.common.sh"
+fi
+
+START_DIR=$(pwd)
 
 cd ..
 
@@ -16,3 +20,5 @@ exit_on_fail "setup yocto env"
 # start
 bitbake ccos-image -c populate_sdk
 exit_on_fail "bitbake failed to create sdk"
+
+cd $START_DIR

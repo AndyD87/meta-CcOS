@@ -14,3 +14,6 @@ DEPENDS = "openssl"
 SRC_URI = "git://github.com/AndyD87/CcOS.git;protocol=https;"
 
 inherit pkgconfig cmake
+
+# Uncomment if Debug is required for CcOS
+# EXTRA_OECMAKE = " -DCMAKE_BUILD_TYPE=Debug"

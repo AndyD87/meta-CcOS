@@ -1,8 +1,12 @@
 #!/bin/bash
 
 # include common methods requires bash
-source "lib.common.sh"
+if [ "$LIB_COMMON_INCLUDED" = "" ]; then
+        source "lib.common.sh"
+fi
 
+START_DIR=$(pwd)
+echo $PWD
 cd ..
 
 if [ "$YOCTO_BRANCH" = "" ] ; then
@@ -22,3 +26,5 @@ bitbake ccos-image
 #bitbake-layers show-recipes
 
 exit_on_fail "Bitbake returned error $?"
+
+cd $START_DIR

@@ -1,10 +1,11 @@
 #!/bin/bash
-################################################################################
-# Load Yocto-poky defaults
-################################################################################
 
 # include common methods requires bash
-source "lib.common.sh"
+if [ "$LIB_COMMON_INCLUDED" = "" ]; then
+        source "lib.common.sh"
+fi
+
+START_DIR=$(pwd)
 
 # Change to top of meta
 cd ..
@@ -25,3 +26,5 @@ else
   cd poky-$YOCTO_BRANCH
 fi
 exit_on_fail
+
+cd $START_DIR
